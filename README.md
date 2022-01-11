@@ -45,6 +45,19 @@ or start every command with `pipenv run`.
       -v, --verbose         Run program in verbose mode
 
 
+# Configuration
+
+`xmobar_wttr` works with both command-line arguments as well as YAML
+configuration files (the first takes precedence over the latter).  To
+set your desired defaults edit the configuration file
+`xmobar_wttr.yml` and place it in either 
+
+-   `~/.config/xmobar_wttr/xmobar_wttr.yml`
+-   `~/.config/xmobar/xmobar_wttr.yml`
+-   `~/.xmobar_wttr/xmobar_wttr.yml`
+-   `~/.xmobar_wttr.yml`
+
+
 # Notation
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -57,8 +70,8 @@ or start every command with `pipenv run`.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">**Notation**</th>
-<th scope="col" class="org-left">**Description**</th>
+<th scope="col" class="org-left">Notation</th>
+<th scope="col" class="org-left">\*Description</th>
 </tr>
 </thead>
 
@@ -98,8 +111,8 @@ or start every command with `pipenv run`.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">**Format map**</th>
-<th scope="col" class="org-left">**Result**</th>
+<th scope="col" class="org-left">Format map</th>
+<th scope="col" class="org-left">Result</th>
 </tr>
 </thead>
 

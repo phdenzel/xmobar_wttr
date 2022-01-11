@@ -9,10 +9,26 @@ Hierarchy:
     2) configs
     3) defaults
 """
+import os
 from argparse import ArgumentParser, RawTextHelpFormatter
 from collections import deque
 import yaml
 import xmobar_wttr
+
+
+def default_config_file(basename='xmobar_wttr.yml'):
+    paths = xmobar_wttr.constants.default_config_paths
+    for p in paths:
+        p = os.path.expanduser(p)
+        if not p.endswith("."):
+            filename = os.path.join(p, basename)
+        else:
+            basename = '.' + basename
+            p = os.path.dirname(p)
+            filename = os.path.join(p, basename)
+        if os.path.exists(filename):
+            return filename
+    return basename
 
 
 def read_args():
@@ -23,7 +39,7 @@ def read_args():
     p = ArgumentParser(prog='xmobar_wttr', formatter_class=RawTextHelpFormatter)
     
     p.add_argument("-c", "--config", dest="config_path", metavar="<path>",
-                   type=str, default='xmobar_wttr.yml', # XDG-CONFIG-HOME compatibility
+                   type=str, default=default_config_file(),
                    help="Path to the config file")
     p.add_argument("-l", "--location", dest="location", metavar="<loc>",
                    type=str,

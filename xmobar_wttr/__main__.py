@@ -6,6 +6,9 @@ import xmobar_wttr.fetch as xwf
 def main(verobse=False):
     sep_char = '|'
     verbose = xmobar_wttr.args.verbose
+    if verbose:
+        print("Config file:\t", xmobar_wttr.config_path)
+        print("Output file:\t", xmobar_wttr.output_file)
     # fetch data
     try:
         url, data = xwf.fetch_wttr_data(sep_char=sep_char)
@@ -18,7 +21,7 @@ def main(verobse=False):
             xmobar_line = ""
         print(xmobar_line)
     if verbose:
-        print(url)
+        print("URL:        \t", url)
     # transmute data fields
     dta_fields = data.split(sep_char)
     dta_fields = xwf.strip_units(dta_fields)

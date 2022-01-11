@@ -133,6 +133,7 @@ default_parmap = {
           'units': "",
           'map': datetime_from_hms}
 }
+
 default_params = list(default_parmap.keys())
 
 extra_parmap = {
@@ -165,3 +166,10 @@ format_sign_pairs = {
     '!': 'i',
 }
 
+default_config_paths = [
+    "~/.config/xmobar_wttr",
+    "~/.config/xmobar",
+    "~/.xmobar_wttr",
+    "~/.xmobar",
+    "~/."
+]
