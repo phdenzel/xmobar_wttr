@@ -139,12 +139,6 @@ set your desired defaults edit the configuration file
 <td class="org-left">\\&#x2026;</td>
 <td class="org-left">\x&#x2026;</td>
 </tr>
-
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
 </tbody>
 </table>
 
