@@ -1,0 +1,26 @@
+Defaults:
+  location: ''  # location for request (if empty, wttr.in sets location)
+  output_file: '/tmp/xmobar_wttr'  # file cache for fallback
+  # template to be rendered by xmobar (see README for details on notation)
+  xmobar_format: '%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'
+  # hooks applied to icons
+  icon_map_hooks:
+    '*': '<2:{}>'
+  format_map:
+    '<': '<fn={}>'
+    '{': '<fc={}>'
+    '\': '\x'
+  # parameters to request from wttr.in
+  params:
+    - 't'  # temperature
+    - 'f'  # temperature (feel)
+    - 'x'  # weather condition
+    - 'h'  # humidity
+    - 'p'  # precipitation
+    - 'o'  # chance of precipitation
+    - 'P'  # pressure
+    - 'w'  # wind
+    - 'M'  # moon days
+    - 'T'  # localtime
+    - 'S'  # sunrise
+    - 's'  # sunset
