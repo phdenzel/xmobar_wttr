@@ -25,7 +25,7 @@ Run Com "xmobar_wttr" ["-c ~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
     directly from the website, using an AUR helper such as
     
     #+begin_src shell
-      yay -S ttf-weahter-icons
+      yay -S ttf-weather-icons
     #+end_src
     
     or by other means.
