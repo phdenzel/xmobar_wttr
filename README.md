@@ -20,7 +20,7 @@ Furthermore, the program uses weather icons from
 [https://github.com/erikflowers/weather-icons](https://github.com/erikflowers/weather-icons).  Install them
 directly from the website, using an AUR helper such as
 
-    yay -S ttf-weahter-icons
+    yay -S ttf-weather-icons
 
 or by other means.
 
