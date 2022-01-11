@@ -1,13 +1,12 @@
 #+AUTHOR: phdenzel
 #+TITLE: xmobar_wttr
-
-TODO
-
+#+OPTIONS: toc:nil
 
 *** Prerequisites
 
     This program mainly uses following python3 modules
     - requests
+    - pyyaml
 
 
 *** Install
@@ -30,7 +29,24 @@ or start every command with ~pipenv run~.
 *** Usage
 
 #+BEGIN_SRC shell
-  pipenv run xmobar_wttr
+  usage: xmobar_wttr [-h] [-c <path>] [-l <loc>] [-f <format>] [-o <path>] [-s <section>] [-p <par-list> [<par-list> ...]] [-v]
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    -c <path>, --config <path>
+                          Path to the config file
+    -l <loc>, --location <loc>
+                          Location for which to pull information.
+    -f <format>, --format <format>
+                          Format template for xmobarrc
+    -o <path>, --output <path>
+                          Path to the output file
+    -s <section>, --section <section>
+                          Section in the yaml file to be parsed
+    -p <par-list> [<par-list> ...], --pars <par-list> [<par-list> ...]
+                          Select parameters to be fetched from wttr.in
+                          excluded parameters are not available in xmobar template format
+    -v, --verbose         Run program in verbose mode
 #+END_SRC
 
 
@@ -45,8 +61,11 @@ Format map:
   ~{#dedede...}~ -> ~<fc=#dedede>...</fc>~
   ~\...~         -> ~\x...~
 
+
+#+begin_comment
 **** Example:
-     ~'%gx %t(%f)<5\200A>.u %G<5\200A>h.u %gw<5\200A>%G<5\200A>w<5\200A>.u %G<5\200A>P<5\200A>.u'~
-     becomes
-     ~'[X] 3(-2)<fn=5>\x200A</fn>°C [X]<fn=5>\x200A</fn>86% [X]<fn=5>\x200A</fn>[X]<fn=5>\x200A>5<fn=5>\x200A</fn>km/h [X]<fn=5>\200A</fn>1015<fn=5>\200A</fn>hPa'~
+     ~'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'~
+     renders as (only a representation)
+     ~TODO: add screenshot~
      which can be read by xmobar's configuration file using e.g. the ~Com~ plugin.
+#+end_comment

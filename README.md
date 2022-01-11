@@ -1,23 +1,12 @@
 
-# Table of Contents
-
-1.  [Prerequisites](#orge0dd8d4)
-2.  [Install](#orgbef9af6)
-3.  [Usage](#orga047849)
-
-TODO
-
-
-<a id="orge0dd8d4"></a>
 
 # Prerequisites
 
 This program mainly uses following python3 modules
 
 -   requests
+-   pyyaml
 
-
-<a id="orgbef9af6"></a>
 
 # Install
 
@@ -34,9 +23,47 @@ To activate the virtual environment run
 or start every command with `pipenv run`.
 
 
-<a id="orga047849"></a>
-
 # Usage
 
-    pipenv run xmobar_wttr
+    usage: xmobar_wttr [-h] [-c <path>] [-l <loc>] [-f <format>] [-o <path>] [-s <section>] [-p <par-list> [<par-list> ...]] [-v]
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -c <path>, --config <path>
+    			Path to the config file
+      -l <loc>, --location <loc>
+    			Location for which to pull information.
+      -f <format>, --format <format>
+    			Format template for xmobarrc
+      -o <path>, --output <path>
+    			Path to the output file
+      -s <section>, --section <section>
+    			Section in the yaml file to be parsed
+      -p <par-list> [<par-list> ...], --pars <par-list> [<par-list> ...]
+    			Select parameters to be fetched from wttr.in
+    			excluded parameters are not available in xmobar template format
+      -v, --verbose         Run program in verbose mode
+
+
+# Notation
+
+  `%[par]`       -> parameter value
+  `%g[par]`      -> render parameter only as icon
+  `%G[par]`      -> prefix icon to parameter value
+  `.u`           -> append units of previous parameter
+Format map:
+  `<2...>`       -> `<fn=2>...</fn>`
+  `{#dedede...}` -> `<fc=#dedede>...</fc>`
+  `\...`         -> `\x...`
+
+\#+begin<sub>comment</sub>
+
+
+## Example:
+
+     `'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'`
+     renders as (only a representation)
+     `TODO: add screenshot`
+     which can be read by xmobar's configuration file using e.g. the `Com` plugin.
+\#+end<sub>comment</sub>
 
