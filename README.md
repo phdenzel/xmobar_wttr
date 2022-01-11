@@ -47,11 +47,18 @@ or start every command with `pipenv run`.
 
 # Notation
 
-  `%[par]`       -> parameter value
-  `%g[par]`      -> render parameter only as icon
-  `%G[par]`      -> prefix icon to parameter value
-  `.u`           -> append units of previous parameter
+`%[par]`       -> parameter value
+
+`%g[par]`      -> render parameter only as icon
+
+`%G[par]`      -> prefix icon to parameter value
+
+`.u`           -> append units of previous parameter
+
 Format map:
-  `<2...>`       -> `<fn=2>...</fn>`
-  `{#dedede...}` -> `<fc=#dedede>...</fc>`
-  `\...`         -> `\x...`
+
+`<2...>`       -> `<fn=2>...</fn>`
+
+`{#dedede...}` -> `<fc=#dedede>...</fc>`
+
+`\...`         -> `\x...`
