@@ -47,18 +47,78 @@ or start every command with `pipenv run`.
 
 # Notation
 
-`%[par]`       -> parameter value
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-`%g[par]`      -> render parameter only as icon
 
-`%G[par]`      -> prefix icon to parameter value
+<colgroup>
+<col  class="org-left" />
 
-`.u`           -> append units of previous parameter
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">**Notation**</th>
+<th scope="col" class="org-left">**Description**</th>
+</tr>
+</thead>
 
-Format map:
+<tbody>
+<tr>
+<td class="org-left">`%[par]`</td>
+<td class="org-left">parameter value</td>
+</tr>
 
-`<2...>`       -> `<fn=2>...</fn>`
 
-`{#dedede...}` -> `<fc=#dedede>...</fc>`
+<tr>
+<td class="org-left">`%g[par]`</td>
+<td class="org-left">render parameter only as icon</td>
+</tr>
 
-`\...`         -> `\x...`
+
+<tr>
+<td class="org-left">`%G[par]`</td>
+<td class="org-left">prefix icon to parameter value</td>
+</tr>
+
+
+<tr>
+<td class="org-left">`.u`</td>
+<td class="org-left">append units of previous parameter</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">**Format map**</th>
+<th scope="col" class="org-left">**Result**</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="org-left">`<2:...>`</td>
+<td class="org-left">`<fn=2>...</fn>`</td>
+</tr>
+
+
+<tr>
+<td class="org-left">`{#dedede:...}`</td>
+<td class="org-left">`<fc=#dedede>...</fc>`</td>
+</tr>
+
+
+<tr>
+<td class="org-left">`\...`</td>
+<td class="org-left">`\x...`</td>
+</tr>
+</tbody>
+</table>
