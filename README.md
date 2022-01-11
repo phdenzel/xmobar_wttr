@@ -55,15 +55,3 @@ Format map:
   `<2...>`       -> `<fn=2>...</fn>`
   `{#dedede...}` -> `<fc=#dedede>...</fc>`
   `\...`         -> `\x...`
-
-\#+begin<sub>comment</sub>
-
-
-## Example:
-
-     `'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'`
-     renders as (only a representation)
-     `TODO: add screenshot`
-     which can be read by xmobar's configuration file using e.g. the `Com` plugin.
-\#+end<sub>comment</sub>
-
