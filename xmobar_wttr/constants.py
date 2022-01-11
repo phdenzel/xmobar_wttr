@@ -35,6 +35,27 @@ weather_symbol_plain = {
 # wind_arrows = ["↓", "↙", "←", "↖", "↑", "↗", "→", "↘"]
 wind_directions = {
     "↓" : "S",
+    "S" : "",
+    "↙" : "SW",
+    "SW": "",
+    "←" : "W",
+    "W" : "",
+    "↖" : "NW",
+    "NW": "",
+    "↑" : "N",
+    "N" : "",
+    "↗" : "NE",
+    "NE": "",
+    "→" : "E",
+    "E" : "",
+    "↘" : "SE",
+    "SE": "",
+    "0" : "",
+    ""  : "",
+}
+
+wind_direction_codes = {
+    "↓" : "S",
     "S" : "\\f044",
     "↙" : "SW",
     "SW": "\\f043",
@@ -54,7 +75,29 @@ wind_directions = {
     ""  : "",
 }
 
-weather_symbols = {      # [   day,  night]
+weather_symbols = {
+    "Unknown":             ["", ""],
+    "Cloudy":              ["", ""],
+    "Fog":                 ["", ""],
+    "HeavyRain":           ["", ""],
+    "HeavyShowers":        ["", ""],
+    "HeavySnow":           ["", ""],
+    "HeavySnowShowers":    ["", ""],
+    "LightRain":           ["", ""],
+    "LightShowers":        ["", ""],
+    "LightSleet":          ["", ""],
+    "LightSleetShowers":   ["", ""],
+    "LightSnow":           ["", ""],
+    "LightSnowShowers":    ["", ""],
+    "PartlyCloudy":        ["", ""],
+    "Sunny":               ["", ""],
+    "ThunderyHeavyRain":   ["", ""],
+    "ThunderyShowers":     ["", ""],
+    "ThunderySnowShowers": ["", ""],
+    "VeryCloudy":          ["", ""],
+}
+
+weather_symbol_codes = { # [     day,  night]
     "Unknown":             ["\\f00d", "\\f02e"],
     "Cloudy":              ["\\f002", "\\f086"],
     "Fog":                 ["\\f003", "\\f04a"],
@@ -71,30 +114,52 @@ weather_symbols = {      # [   day,  night]
     "PartlyCloudy":        ["\\f00c", "\\f083"],
     "Sunny":               ["\\f00d", "\\f077"],
     "ThunderyHeavyRain":   ["\\f010", "\\f03b"],
-    "ThunderyShowers":     ["\\f00e", "\\f01d"],
+    "ThunderyShowers":     ["\\f00e", "\\f02c"],
     "ThunderySnowShowers": ["\\f06b", "\\f06c"],
     "VeryCloudy":          ["\\f013", "\\f013"],
 }
 
 moon_phase_symbols = {
+    0: "",  1: "",  2: "",  3: "",  4: "",  5: "",  6: "",  7: "",
+    8: "",  9: "", 10: "",  11: "", 12: "", 13: "", 14: "", 15: "",
+    16: "", 17: "", 18: "", 19: "", 20: "", 21: "", 22: "", 23: "",
+    24: "", 25: "", 26: "", 27: "", 28: "", 29: ""}
+
+moon_phase_symbol_codes = {
     0: "\\f095", 1: "\\f096", 2: "\\f097", 3: "\\f098", 4: "\\f099", 5: "\\f09a",
     6: "\\f09b", 7: "\\f09c", 8: "\\f09d", 9: "\\f09e", 10:"\\f09f", 11:"\\f0a0",
     12:"\\f0a1", 13:"\\f0a2", 14:"\\f0a3", 15:"\\f0a4", 16:"\\f0a5", 17:"\\f0a6",
     18:"\\f0a7", 19:"\\f0a8", 20:"\\f0a9", 21:"\\f0aa", 22:"\\f0ab", 23:"\\f0ac",
-    24:"\f0ad", 25:"\\f0ae", 26:"\\f0af", 27:"\\f0a0", 28:"\\f0eb", 29:"\\f0d0"
+    24:"\\f0ad", 25:"\\f0ae", 26:"\\f0af", 27:"\\f0a0", 28:"\\f0eb", 29:"\\f0d0"
 }
 
 icons = {
+    "t": "",  # "\\f055",
+    "f": "",  # "\\f053",
+    "x": weather_symbols,
+    "h": "",  # "\\f07a",
+    "p": "",  # "\\f084",
+    "o": "",  # "\\f03e",
+    "P": "",  # "\\f079",
+    "w": wind_directions,
+    "W": "",  # "\\f050",
+    "M": moon_phase_symbols,
+    "T": "",  # "\\f08d",
+    "S": "",  # "\\f051",
+    "s": "",  # "\\f052",
+}
+
+icon_codes = {
     "t": "\\f055",
     "f": "\\f053",
-    "x": weather_symbols,
+    "x": weather_symbol_codes,
     "h": "\\f07a",
     "p": "\\f084",
     "o": "\\f03e",
     "P": "\\f079",
-    "w": wind_directions,
+    "w": wind_direction_codes,
     "W": "\\f050",
-    "M": moon_phase_symbols,
+    "M": moon_phase_symbol_codes,
     "T": "\\f08d",
     "S": "\\f051",
     "s": "\\f052",
@@ -151,7 +216,7 @@ extra_parmap = {
 }
 extra_params = list(extra_parmap.keys())
 
-default_xmobar_format = '%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'
+default_xmobar_format = '%gx %t(%f)<1: >.u %G<1: >h %gW<1: >%G<1: >w<1: >.u %G<1: >P<1: >.u'
 
 default_format_map = {
     '<': '<fn={}>',
