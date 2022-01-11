@@ -10,8 +10,14 @@ This program mainly uses following python3 modules
 
 # Install
 
-For now, this program runs only from source. To install, clone the
-repository, and create a virtual environment with
+    pip install xmobar-wttr
+
+For installing from source, clone the repository, and run
+
+    cd xmobar_wttr
+    python setup.py install
+
+or create a virtual environment with
 
     pipenv install
     pipenv install -e .
@@ -77,25 +83,25 @@ set your desired defaults edit the configuration file
 
 <tbody>
 <tr>
-<td class="org-left">`%[par]`</td>
+<td class="org-left">%[par]</td>
 <td class="org-left">parameter value</td>
 </tr>
 
 
 <tr>
-<td class="org-left">`%g[par]`</td>
+<td class="org-left">%g[par]</td>
 <td class="org-left">render parameter only as icon</td>
 </tr>
 
 
 <tr>
-<td class="org-left">`%G[par]`</td>
+<td class="org-left">%G[par]</td>
 <td class="org-left">prefix icon to parameter value</td>
 </tr>
 
 
 <tr>
-<td class="org-left">`.u`</td>
+<td class="org-left">.u</td>
 <td class="org-left">append units of previous parameter</td>
 </tr>
 </tbody>
@@ -118,20 +124,27 @@ set your desired defaults edit the configuration file
 
 <tbody>
 <tr>
-<td class="org-left">`<2:...>`</td>
-<td class="org-left">`<fn=2>...</fn>`</td>
+<td class="org-left"><2:&#x2026;></td>
+<td class="org-left"><fn=2>&#x2026;</fn></td>
 </tr>
 
 
 <tr>
-<td class="org-left">`{#dedede:...}`</td>
-<td class="org-left">`<fc=#dedede>...</fc>`</td>
+<td class="org-left">{#dedede:&#x2026;}</td>
+<td class="org-left"><fc=#dedede>&#x2026;</fc></td>
 </tr>
 
 
 <tr>
-<td class="org-left">`\...`</td>
-<td class="org-left">`\x...`</td>
+<td class="org-left">\\&#x2026;</td>
+<td class="org-left">\x&#x2026;</td>
+</tr>
+
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
+

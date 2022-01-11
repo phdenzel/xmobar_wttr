@@ -5,10 +5,14 @@ name = "pypi"
 
 [packages]
 requests = "*"
-xmobar-wttr = {editable = true, path = "."}
 pyyaml = "*"
+xmobar-wttr = {editable = true, path = "."}
 
 [dev-packages]
+twine = "*"
+check-manifest = "*"
+pytest = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.9"

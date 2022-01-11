@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+xmobar_wttr.constants
+
+@author: phdenzel
+"""
 import xmobar_wttr
 from xmobar_wttr.utils import WindVector
 from xmobar_wttr.utils import datetime_from_hms, is_day

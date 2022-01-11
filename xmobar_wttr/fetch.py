@@ -1,3 +1,8 @@
+"""
+xmobar_wttr.fetch
+
+@author: phdenzel
+"""
 from datetime import datetime
 import requests
 import xmobar_wttr

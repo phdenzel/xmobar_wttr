@@ -11,8 +11,17 @@
 
 *** Install
 
-For now, this program runs only from source. To install, clone the
-repository, and create a virtual environment with
+#+BEGIN_SRC shell
+pip install xmobar-wttr
+#+END_SRC
+
+For installing from source, clone the repository, and run
+#+BEGIN_SRC shell
+cd xmobar_wttr
+python setup.py install
+#+END_SRC
+
+or create a virtual environment with
 #+BEGIN_SRC shell
 pipenv install
 pipenv install -e .
@@ -64,28 +73,28 @@ set your desired defaults edit the configuration file
 
 *** Notation
 
-|------------+------------------------------------|
-| Notation   | *Description                       |
-|------------+------------------------------------|
-| ~%[par]~   | parameter value                    |
-| ~%g[par]~  | render parameter only as icon      |
-| ~%G[par]~  | prefix icon to parameter value     |
-| ~.u~       | append units of previous parameter |
-|------------+------------------------------------|
+|----------+------------------------------------|
+| Notation | *Description                       |
+|----------+------------------------------------|
+| %[par]   | parameter value                    |
+| %g[par]  | render parameter only as icon      |
+| %G[par]  | prefix icon to parameter value     |
+| .u       | append units of previous parameter |
+|----------+------------------------------------|
 
-|-----------------+------------------------|
-| Format map      | Result                 |
-|-----------------+------------------------|
-| ~<2:...>~       | ~<fn=2>...</fn>~       |
-| ~{#dedede:...}~ | ~<fc=#dedede>...</fc>~ |
-| ~\...~          | ~\x...~                |
-|-----------------+------------------------|
+|---------------+----------------------|
+| Format map    | Result               |
+|---------------+----------------------|
+| <2:...>       | <fn=2>...</fn>       |
+| {#dedede:...} | <fc=#dedede>...</fc> |
+| \...          | \x...                |
+|---------------+----------------------|
 
 
 #+BEGIN_COMMENT
-**** Example:
-     ~'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'~
-     renders as (only a representation)
-     ~TODO: add screenshot~
-     which can be read by xmobar's configuration file using e.g. the ~Com~ plugin.
+- Example:
+~'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'~
+renders as (only a representation)
+~TODO: add screenshot~
+which can be read by xmobar's configuration file using e.g. the ~Com~ plugin.
 #+END_COMMENT

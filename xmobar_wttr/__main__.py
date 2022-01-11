@@ -1,3 +1,8 @@
+"""
+xmobar_wttr.__main__
+
+@author: phdenzel
+"""
 import os
 import xmobar_wttr
 import xmobar_wttr.fetch as xwf

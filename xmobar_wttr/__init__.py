@@ -1,3 +1,8 @@
+"""
+xmobar_wttr.__init__
+
+@author: phdenzel
+"""
 from types import ModuleType
 import xmobar_wttr
 import xmobar_wttr.constants

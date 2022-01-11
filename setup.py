@@ -1,3 +1,8 @@
+"""
+xmobar_wttr - setup
+
+@author: phdenzel
+"""
 import os
 from setuptools import setup
 from setuptools import find_packages
@@ -18,7 +23,7 @@ setup(
     name="xmobar_wttr",
     author="Philipp Denzel",
     author_email="phdenzel@gmail.com",
-    version="0.0.dev1",
+    version="0.0.dev3",
     description=("An external xmobar plugin for customizable weather info!"),
     long_description=ld['data'],
     long_description_content_type=ld['content_type'],
@@ -39,14 +44,15 @@ setup(
 
     # Package
     install_requires=['requests', 'pyyaml'],
-    package_dir={"": "xmobar_wttr"},
-    packages=find_packages(where='xmobar_wttr'),
-    py_modules=['xmobar_wttr'],
+    packages=['xmobar_wttr'],
     python_requires=">=3.6",
     entry_points={
         'console_scripts': [
             'xmobar_wttr = xmobar_wttr.__main__:main',
         ],
     },
+    # setup_requires=['pytest-runner'],
+    # tests_require=['pytest'],
+    # test_suite='tests'
 
 )

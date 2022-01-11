@@ -1,7 +1,13 @@
 MODULE := xmobar_wttr
 
 pkg: readme
-	@pipenv run python setup.py sdist bdist_wheel
+	@python3 setup.py sdist bdist_wheel
+
+twinetest: pkg
+	@twine upload -r testpypi dist/*
+
+twine: pkg
+	@twine upload -r pypi dist/*
 
 dev: readme
 	@pipenv install --dev

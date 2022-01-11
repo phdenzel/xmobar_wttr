@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+xmobar_wttr.utils
+
+@author: phdenzel
+"""
 import os
 from datetime import datetime
 import xmobar_wttr
