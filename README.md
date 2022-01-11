@@ -1,3 +1,12 @@
+`xmobar_wttr` is a command-line program which fetches weather info
+from [wttr.in](https://wttr.in) and applies direct formatting to be used by xmobar.
+Different from already available plugins, it can easily be configured
+to use any kind of combination of numbers, icons, and colors.
+
+In the `commands` list your `xmobarrc`, add something along the lines
+of
+
+    Run Com "xmobar_wttr" ["-c ~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
 
 
 # Prerequisites
@@ -6,6 +15,14 @@ This program mainly uses following python3 modules
 
 -   requests
 -   pyyaml
+
+Furthermore, the program uses weather icons from
+[https://github.com/erikflowers/weather-icons](https://github.com/erikflowers/weather-icons).  Install them
+directly from the website, using an AUR helper such as
+
+    yay -S ttf-weahter-icons
+
+or by other means.
 
 
 # Install
