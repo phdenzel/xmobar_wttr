@@ -1,7 +1,7 @@
 MODULE := xmobar_wttr
 
 pkg: readme
-	@python3 setup.py sdist bdist_wheel
+	@python3 setup.py sdist bdist_egg
 
 twinetest: pkg
 	@twine upload -r testpypi dist/*
