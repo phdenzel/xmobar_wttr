@@ -1,12 +1,14 @@
 `xmobar_wttr` is a command-line program which fetches weather info
 from [wttr.in](https://wttr.in) and applies direct formatting to be used by xmobar.
 Different from already available plugins, it can easily be configured
-to use any kind of combination of numbers, icons, and colors.
+to use any kind of combination of numbers, icons, and colors.  It
+implements a custom syntax with which a single line in the
+`xmobar_wttr.yml` configuration file translates to an xmobar field entry.
 
-In the `commands` list your `xmobarrc`, add something along the lines
+In the `commands` list of your `xmobarrc`, add something along the lines
 of
 
-    Run Com "xmobar_wttr" ["-c ~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
+    Run Com "xmobar_wttr" ["-c", "~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
 
 
 # Prerequisites
@@ -32,7 +34,7 @@ or by other means.
 For installing from source, clone the repository, and run
 
     cd xmobar_wttr
-    python setup.py install
+    python setup.py install --user
 
 or create a virtual environment with
 
@@ -83,6 +85,15 @@ set your desired defaults edit the configuration file
 
 # Notation
 
+-   Fields are separated by `%`.
+-   Each field should have a parameter entry prefixed by an exclamation
+    mark `!`, e.g. `!h`.
+-   Units can be placed using `.u`
+-   Fonts can be selected using `<N:...>` where `N` is the xmobar font
+    index, e.g. `<2:weather condition>` formats to `<fn=2>weather
+      condition</fn>`
+-   Analogously colors can be used using `{#dedede:...}`.
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -94,25 +105,25 @@ set your desired defaults edit the configuration file
 <thead>
 <tr>
 <th scope="col" class="org-left">Notation</th>
-<th scope="col" class="org-left">\*Description</th>
+<th scope="col" class="org-left">*Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td class="org-left">%[par]</td>
+<td class="org-left">%[!par]</td>
 <td class="org-left">parameter value</td>
 </tr>
 
 
 <tr>
-<td class="org-left">%g[par]</td>
+<td class="org-left">%g[!par]</td>
 <td class="org-left">render parameter only as icon</td>
 </tr>
 
 
 <tr>
-<td class="org-left">%G[par]</td>
+<td class="org-left">%G[!par]</td>
 <td class="org-left">prefix icon to parameter value</td>
 </tr>
 
@@ -141,21 +152,31 @@ set your desired defaults edit the configuration file
 
 <tbody>
 <tr>
-<td class="org-left"><2:&#x2026;></td>
-<td class="org-left"><fn=2>&#x2026;</fn></td>
+<td class="org-left">&lt;2:&#x2026;&gt;</td>
+<td class="org-left">&lt;fn=2&gt;&#x2026;&lt;/fn&gt;</td>
 </tr>
 
 
 <tr>
 <td class="org-left">{#dedede:&#x2026;}</td>
-<td class="org-left"><fc=#dedede>&#x2026;</fc></td>
+<td class="org-left">&lt;fc=#dedede&gt;&#x2026;&lt;/fc&gt;</td>
 </tr>
 
 
 <tr>
-<td class="org-left">\\&#x2026;</td>
+<td class="org-left">\&#x2026;</td>
 <td class="org-left">\x&#x2026;</td>
 </tr>
 </tbody>
 </table>
+
+
+## Example:
+
+`'%g!x %!t(%!f)<1: >.u {#46d9ff:%G}<1: >!h'`
+could format to something like
+`<fn=6></fn> 3(1)<fn=1> </fn>°C <fc=#46d9ff><fn=6></fn></fc><fn=1> </fn>81`
+and could renders in xmobar as
+
+![img](./imgs/screenshot_example.png)
 

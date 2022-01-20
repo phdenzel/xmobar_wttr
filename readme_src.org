@@ -5,12 +5,14 @@
 ~xmobar_wttr~ is a command-line program which fetches weather info
 from [[https://wttr.in][wttr.in]] and applies direct formatting to be used by xmobar.
 Different from already available plugins, it can easily be configured
-to use any kind of combination of numbers, icons, and colors.
+to use any kind of combination of numbers, icons, and colors.  It
+implements a custom syntax with which a single line in the
+~xmobar_wttr.yml~ configuration file translates to an xmobar field entry.
 
-In the ~commands~ list your ~xmobarrc~, add something along the lines
+In the ~commands~ list of your ~xmobarrc~, add something along the lines
 of
 #+begin_src haskell
-Run Com "xmobar_wttr" ["-c ~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
+Run Com "xmobar_wttr" ["-c", "~/.config/xmobar/xmobar_wttr.yml"] "wttr" 9000
 #+end_src
 
 
@@ -40,7 +42,7 @@ pip install xmobar-wttr
 For installing from source, clone the repository, and run
 #+BEGIN_SRC shell
 cd xmobar_wttr
-python setup.py install
+python setup.py install --user
 #+END_SRC
 
 or create a virtual environment with
@@ -95,12 +97,21 @@ set your desired defaults edit the configuration file
 
 *** Notation
 
+- Fields are separated by ~%~.
+- Each field should have a parameter entry prefixed by an exclamation
+  mark ~!~, e.g. ~!h~.
+- Units can be placed using ~.u~
+- Fonts can be selected using ~<N:...>~ where ~N~ is the xmobar font
+  index, e.g. ~<2:weather condition>~ formats to ~<fn=2>weather
+  condition</fn>~
+- Analogously colors can be used using ~{#dedede:...}~.
+
 |----------+------------------------------------|
 | Notation | *Description                       |
 |----------+------------------------------------|
-| %[par]   | parameter value                    |
-| %g[par]  | render parameter only as icon      |
-| %G[par]  | prefix icon to parameter value     |
+| %[!par]  | parameter value                    |
+| %g[!par] | render parameter only as icon      |
+| %G[!par] | prefix icon to parameter value     |
 | .u       | append units of previous parameter |
 |----------+------------------------------------|
 
@@ -113,10 +124,12 @@ set your desired defaults edit the configuration file
 |---------------+----------------------|
 
 
-#+BEGIN_COMMENT
-- Example:
-~'%gx %t(%f)<1:\200A>.u %G<1:\200A>h %gW<1:\200A>%G<1:\200A>w<1:\200A>.u %G<1:\200A>P<1:\200A>.u'~
-renders as (only a representation)
-~TODO: add screenshot~
-which can be read by xmobar's configuration file using e.g. the ~Com~ plugin.
-#+END_COMMENT
+**** Example:
+~'%g!x %!t(%!f)<1: >.u {#46d9ff:%G}<1: >!h'~
+could format to something like
+~<fn=6></fn> 3(1)<fn=1> </fn>°C <fc=#46d9ff><fn=6></fn></fc><fn=1> </fn>81~
+and could renders in xmobar as
+
+#+ATTR_HTML: :width 400 :style margin-left: auto; margin-right: auto;
+[[./imgs/screenshot_example.png]]
+
