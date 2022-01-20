@@ -8,6 +8,15 @@ import xmobar_wttr
 import xmobar_wttr.fetch as xwf
 
 
+def fallback():
+    tmpf = xmobar_wttr.output_file
+    if os.path.exists(tmpf) and os.stat(tmpf).st_size != 0:
+        xmobar_line = xmobar_wttr.utils.read_tail1(tmpf)
+    else:
+        xmobar_line = ""
+    return xmobar_line
+
+
 def main(verobse=False):
     sep_char = '|'
     verbose = xmobar_wttr.args.verbose
@@ -19,15 +28,17 @@ def main(verobse=False):
         url, data = xwf.fetch_wttr_data(sep_char=sep_char)
     except xwf.LocationError as e:
         print(e)
-        tmpf = xmobar_wttr.output_file
-        if os.path.exists(tmpf) and os.stat(tmpf).st_size != 0:
-            xmobar_line = xmobar_wttr.utils.read_tail1(tmpf)
-        else:
-            xmobar_line = ""
+        xmobar_line = fallback()
         print(xmobar_line)
+        return
     if verbose:
         print("URL:        \t", url)
+    if 'nknown location' in data or 'please try' in data:
+        xmobar_line = fallback()
+        print(xmobar_line)
+        return
     # transmute data fields
+    print(data)
     dta_fields = data.split(sep_char)
     dta_fields = xwf.strip_units(dta_fields)
     dta_fields = xwf.filter_fields(dta_fields)
