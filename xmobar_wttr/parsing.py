@@ -31,6 +31,26 @@ def default_config_file(basename='xmobar_wttr.yml'):
     return basename
 
 
+def import_haskell_color_lib(path=None):
+    """
+    Parse a Haskell file and import all variables
+    """
+    color_lib = {}
+    if path is None:
+        path = xmobar_wttr.haskell_color_lib
+    filepath = os.path.expanduser(path)
+    if not os.path.exists(filepath):
+        return color_lib
+    with open(filepath, 'r') as f:
+        lib_text = f.readlines()
+    for line in lib_text:
+        if '=' in line:
+            v, c = line.split('=')
+            color_lib[v.strip()] = c.strip().replace('"', "")
+    xmobar_wttr.color_lib = color_lib
+    return color_lib
+
+
 def read_args():
     """
     Parse command-line arguments
@@ -132,22 +152,26 @@ def parse_fields(data_fields,
             # graphical replacement
             if f_p in ['G', 'g']:
                 lookahead = pointer + 1
-                while f[lookahead] not in icon_map:
+                while f[lookahead] != "!":
                     lookahead += 1
-                if lookahead > len(f):
+                if lookahead > len(f)-1:
                     break
-                f_p = icon_map(f[pointer]+f[lookahead])
+                f_p = icon_map(f[pointer]+f[lookahead]+f[lookahead+1])
                 # lowercase g skips the value
                 if f[pointer] == 'g':
                     cache[lookahead] = ''
+                    cache[lookahead+1] = ''
             # value replacement
-            elif f_p in parmap:
-                f_p = str(parmap[f[pointer]]['val'])
+            elif f_p == "!":
+                if pointer >= len(f):
+                    continue
+                f_p = str(parmap[f[pointer]+f[pointer+1]]['val'])
+                cache[pointer+1] = ''
                 lookahead = pointer
                 # units replacement
                 while lookahead < len(f):
                     if f[lookahead:min(lookahead+2,len(f))] == '.u':
-                        cache[lookahead] = parmap[f[pointer]]['units']
+                        cache[lookahead] = parmap[f[pointer]+f[pointer+1]]['units']
                         cache[min(lookahead+1,len(f)-1)] = ''
                         break
                     lookahead += 1
@@ -193,6 +217,8 @@ def parse_format(field_string, format_map: dict=None):
             # everything inbetween
             content = field_string[kidx+1:akidx]
             arg, content = content.split(":")
+            if arg in xmobar_wttr.color_lib:
+                arg = xmobar_wttr.color_lib[arg]
             # opening format
             fmt = format_map[key].format(arg)
             # first partition at occurrence
@@ -205,3 +231,7 @@ def parse_format(field_string, format_map: dict=None):
         string_cache.append(field_string[endian:])
         field_string = "".join(string_cache)
     return field_string
+
+
+if __name__ == "__main__":
+    import_haskell_color_lib()

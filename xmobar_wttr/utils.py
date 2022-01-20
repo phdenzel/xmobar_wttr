@@ -203,9 +203,13 @@ class IconMap(object):
             parmap = xmobar_wttr.parmap
         if hooks is None:
             hooks = xmobar_wttr.icon_map_hooks
-        par = key[1]
+        par = key[1:]
         val = get_parmap_val(par)
         icon = self.get_icon(par, val)
         par_hooks = [hooks[k] for k in [par, "*"] if k in hooks]
         icon = self.wrap_hook(icon, *par_hooks)
         return icon
+
+
+if __name__ == "__main__":
+    pass

@@ -35,6 +35,7 @@ def main(verobse=False):
     # update module variables
     xmobar_wttr.utils.update_parmap(dta_fields, xmobar_wttr.params)
     xmobar_wttr.utils.set_localtime(xmobar_wttr.parmap)
+    xmobar_wttr.parsing.import_haskell_color_lib(xmobar_wttr.haskell_color_lib)
     # construct xmobar line
     xmobar_line = xwf.render_fields(dta_fields,
                                     _format=xmobar_wttr.xmobar_format,

@@ -18,7 +18,7 @@ def fetch_wttr_data(wttr_url: str='https://wttr.in/', location: str=None,
     if location is None:
         location = xmobar_wttr.location
     if fetch_params is None:
-        fetch_params = [p for p in xmobar_wttr.params
+        fetch_params = [p.replace('!', '') for p in xmobar_wttr.params
                         if p in xmobar_wttr.constants.default_params]
     loc_uri = requests.utils.requote_uri(location)
     params = sep_char.join([f"%{p}" for p in fetch_params])
@@ -66,9 +66,10 @@ def type_fields(data_fields: list, parmap: dict=None):
     if parmap is None:
         parmap = xmobar_wttr.utils.get_parmap()
     for i, p in enumerate(parmap.keys()):
-        if isinstance(data_fields[i], str):
+        df = data_fields[i]
+        if isinstance(df, str):
             try:
-                data_fields[i] = float(data_fields[i]) if '.' in data_fields else int(data_fields[i])
+                data_fields[i] = float(df) if '.' in df else int(df)
             except Exception:
                 pass
     return data_fields

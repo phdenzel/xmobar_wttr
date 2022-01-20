@@ -20,6 +20,8 @@ parmap = xmobar_wttr.constants.default_parmap
 xmobar_format = xmobar_wttr.constants.default_xmobar_format
 format_map = xmobar_wttr.constants.default_format_map
 icon_map_hook = xmobar_wttr.constants.default_icon_map_hook
+haskell_color_lib = ""
+color_lib = {}
 
 parser, args = xmobar_wttr.parsing.read_args()
 xmobar_wttr.parsing.read_configs()
