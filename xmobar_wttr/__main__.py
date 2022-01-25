@@ -38,7 +38,6 @@ def main(verobse=False):
         print(xmobar_line)
         return
     # transmute data fields
-    print(data)
     dta_fields = data.split(sep_char)
     dta_fields = xwf.strip_units(dta_fields)
     dta_fields = xwf.filter_fields(dta_fields)
