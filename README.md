@@ -176,7 +176,7 @@ set your desired defaults edit the configuration file
 `'%g!x %!t(%!f)<1: >.u {#46d9ff:%G}<1: >!h'`
 could format to something like
 `<fn=6></fn> 3(1)<fn=1> </fn>°C <fc=#46d9ff><fn=6></fn></fc><fn=1> </fn>81`
-and could renders in xmobar as
+and renders in xmobar as
 
 ![img](./imgs/screenshot_example.png)
 
