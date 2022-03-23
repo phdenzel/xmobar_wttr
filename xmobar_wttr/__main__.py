@@ -4,6 +4,7 @@ xmobar_wttr.__main__
 @author: phdenzel
 """
 import os
+import requests
 import xmobar_wttr
 import xmobar_wttr.fetch as xwf
 
@@ -27,18 +28,25 @@ def main(verobse=False):
     try:
         url, data = xwf.fetch_wttr_data(sep_char=sep_char)
     except xwf.LocationError as e:
-        print(e)
+        xmobar_line = fallback()
+        print(xmobar_line)
+        return
+    except requests.exceptions.ConnectionError as e:
         xmobar_line = fallback()
         print(xmobar_line)
         return
     if verbose:
         print("URL:        \t", url)
+        print("Response:   \t", data)
     if 'nknown location' in data or 'please try' in data:
         xmobar_line = fallback()
         print(xmobar_line)
         return
     # transmute data fields
+        
     dta_fields = data.split(sep_char)
+    if verbose:
+        print("Data fields:\t", dta_fields)
     dta_fields = xwf.strip_units(dta_fields)
     dta_fields = xwf.filter_fields(dta_fields)
     dta_fields = xwf.type_fields(dta_fields)
