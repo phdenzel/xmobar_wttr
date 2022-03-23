@@ -23,9 +23,9 @@ def default_config_file(basename='xmobar_wttr.yml'):
         if not p.endswith("."):
             filename = os.path.join(p, basename)
         else:
-            basename = '.' + basename
+            bn = '.' + basename
             p = os.path.dirname(p)
-            filename = os.path.join(p, basename)
+            filename = os.path.join(p, bn)
         if os.path.exists(filename):
             return filename
     return basename

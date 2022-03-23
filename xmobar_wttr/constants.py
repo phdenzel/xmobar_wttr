@@ -52,6 +52,7 @@ wind_directions = {
     "SE": "",
     "0" : "",
     ""  : "",
+    " " : "",
 }
 
 wind_direction_codes = {
@@ -73,6 +74,7 @@ wind_direction_codes = {
     "SE": "\\f088",
     "0" : "",
     ""  : "",
+    " " : "",
 }
 
 weather_symbols = {

@@ -136,6 +136,8 @@ def set_localtime(parmap: dict=None):
 class WindVector(object):
     def __init__(self, vector_str):
         self.vector_str = vector_str
+        if self.vector_str[0] not in xmobar_wttr.constants.wind_directions:
+            self.vector_str = ' {}'.format(self.vector_str)
 
     @property
     def arrow(self):
