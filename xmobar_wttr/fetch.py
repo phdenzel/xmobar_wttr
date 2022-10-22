@@ -11,6 +11,9 @@ import xmobar_wttr.parsing as xwp
 class LocationError(ValueError):
     pass
 
+class ServiceError(ValueError):
+    pass
+
 
 def fetch_wttr_data(wttr_url: str='https://wttr.in/', location: str=None,
                     fetch_params: list=None, sep_char: str="|",
@@ -29,10 +32,13 @@ def fetch_wttr_data(wttr_url: str='https://wttr.in/', location: str=None,
     resp = requests.get(url)
     if resp.status_code == 200:
         return url, resp.text[1:-1]
-    elif resp.status_code == 404:
+    elif resp.status_code == 404:  # page not found
         raise LocationError("Location not found (404)! "
                             "Try excluding parameters T, S, and s.\n"
                             "Response: {}".format(resp.text))
+    elif resp.status_code == 503:  # service unavailable
+        raise ServiceError("Service currently unavailable (503)! "
+                           "Response: {}".format(resp.text))
 
 
 def strip_units(data_fields: list, parmap: dict=None):

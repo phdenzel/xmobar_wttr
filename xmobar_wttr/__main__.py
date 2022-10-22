@@ -27,11 +27,8 @@ def main(verobse=False):
     # fetch data
     try:
         url, data = xwf.fetch_wttr_data(sep_char=sep_char)
-    except xwf.LocationError as e:
-        xmobar_line = fallback()
-        print(xmobar_line)
-        return
-    except requests.exceptions.ConnectionError as e:
+    except (xwf.LocationError, xwf.ServiceError,
+            requests.exceptions.ConnectionError) as e:
         xmobar_line = fallback()
         print(xmobar_line)
         return
