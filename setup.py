@@ -23,7 +23,7 @@ setup(
     name="xmobar_wttr",
     author="Philipp Denzel",
     author_email="phdenzel@gmail.com",
-    version="0.2.alpha",
+    version="0.3.alpha",
     description=("An external xmobar plugin for customizable weather info!"),
     long_description=ld['data'],
     long_description_content_type=ld['content_type'],
